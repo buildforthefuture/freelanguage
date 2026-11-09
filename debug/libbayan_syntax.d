@@ -1,0 +1,1 @@
+/home/tiny/freelang/target/debug/libbayan_syntax.rlib: /home/tiny/freelang/bayan-syntax/src/ast.rs /home/tiny/freelang/bayan-syntax/src/diag.rs /home/tiny/freelang/bayan-syntax/src/lib.rs /home/tiny/freelang/bayan-syntax/src/parser.rs /home/tiny/freelang/bayan-syntax/src/pretty.rs /home/tiny/freelang/bayan-syntax/src/span.rs /home/tiny/freelang/bayan-syntax/src/token.rs
