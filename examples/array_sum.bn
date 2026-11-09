@@ -1,0 +1,21 @@
+module array_sum
+extern fn print_i64(v: i64)
+
+fn sum_array(data: ptr, len: i64) -> i64 {
+  var total: i64 = 0
+  var i: i64 = 0
+  loop {
+    if i.ge.s(len) { break }
+    let addr: ptr = int2ptr(ptr2int(data).add.wrap(i.mul.wrap(4)))
+    let x: i32 = load.unaligned<i32>(addr)
+    total = total.add.wrap(sext<i64>(x))
+    i = i.add.wrap(1)
+  }
+  return total
+}
+
+fn main() -> i64 {
+  var r: i64 = sum_array(null, 0)
+  print_i64(r)
+  return 0
+}

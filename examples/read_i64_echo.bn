@@ -1,0 +1,9 @@
+module read_i64_echo
+extern fn read_i64() -> i64
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var v: i64 = read_i64()
+  print_i64(v)
+  return 0
+}

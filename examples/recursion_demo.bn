@@ -1,0 +1,13 @@
+module recursion_demo
+extern fn print_i64(v: i64)
+
+fn fact(n: i64) -> i64 {
+  if n.le.s(1) { return 1 }
+  return n.mul.wrap(fact(n.sub.wrap(1)))
+}
+
+fn main() -> i64 {
+  var r: i64 = fact(5)  // 120
+  print_i64(r)
+  return 0
+}

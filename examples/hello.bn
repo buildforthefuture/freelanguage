@@ -1,0 +1,7 @@
+module hello
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  print_i64(42)
+  return 0
+}

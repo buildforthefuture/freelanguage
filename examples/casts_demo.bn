@@ -1,0 +1,12 @@
+module casts_demo
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var x: i32 = 300
+  var y: i64 = sext<i64>(x)
+  var z: i8 = trunc<i8>(y)
+  var f: f64 = sitofp<f64>(z)
+  var b: i64 = fptosi<i64>(f)
+  print_i64(b)
+  return 0
+}

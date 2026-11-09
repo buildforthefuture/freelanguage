@@ -1,0 +1,15 @@
+module struct_demo
+struct P { x: i32, y: i32 } align(8)
+
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var p: ptr = alloc(8)
+  store.unaligned<i32>(p, 3)            // field x at offset 0
+  store.unaligned<i32>(int2ptr(ptr2int(p).add.wrap(4)), 4)  // field y at offset 4
+  var vx: i32 = load.unaligned<i32>(p)
+  var vy: i32 = load.unaligned<i32>(int2ptr(ptr2int(p).add.wrap(4)))
+  var s: i64 = sext<i64>(vx).add.wrap(sext<i64>(vy))
+  print_i64(s)
+  return 0
+}

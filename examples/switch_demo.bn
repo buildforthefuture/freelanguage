@@ -1,0 +1,15 @@
+module switch_demo
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var x: i64 = 2
+  var r: i64 = 0
+  switch x {
+    case 0 => { r = 10 }
+    case 1 => { r = 20 }
+    case 2 => { r = 30 }
+    default => { r = 99 }
+  }
+  print_i64(r)
+  return 0
+}

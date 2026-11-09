@@ -1,0 +1,23 @@
+module fibonacci
+extern fn print_i64(v: i64)
+
+fn fib(n: i64) -> i64 {
+  var a: i64 = 0
+  var b: i64 = 1
+  var i: i64 = 0
+  loop {
+    if i.ge.s(n) { break }
+    var t: i64 = a.add.wrap(b)
+    a = b
+    b = t
+    i = i.add.wrap(1)
+  }
+  return a
+}
+
+fn main() -> i64 {
+  var n: i64 = 10
+  var r: i64 = fib(n)
+  print_i64(r)
+  return 0
+}

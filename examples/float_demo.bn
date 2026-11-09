@@ -1,0 +1,11 @@
+module float_demo
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var a: f64 = 1.5
+  var b: f64 = 2.5
+  var c: f64 = a.add.wrap(b)   // 4.0
+  var d: i64 = fptosi<i64>(c)
+  print_i64(d)
+  return 0
+}

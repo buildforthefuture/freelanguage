@@ -1,0 +1,32 @@
+module linked_list
+extern fn print_i64(v: i64)
+// Node: { next: ptr, value: i64 } at offsets 0 and 8
+
+fn list_push(head: ptr, value: i64) -> ptr {
+  let node: ptr = alloc(16)
+  store.unaligned<ptr>(node, head)
+  store.unaligned<i64>(int2ptr(ptr2int(node).add.wrap(8)), value)
+  return node
+}
+
+fn list_sum(head: ptr) -> i64 {
+  var sum: i64 = 0
+  var cur: ptr = head
+  loop {
+    if cur.eq(null) { break }
+    let val: i64 = load.unaligned<i64>(int2ptr(ptr2int(cur).add.wrap(8)))
+    sum = sum.add.wrap(val)
+    cur = load.unaligned<ptr>(cur)
+  }
+  return sum
+}
+
+fn main() -> i64 {
+  var head: ptr = null
+  head = list_push(head, 10)
+  head = list_push(head, 20)
+  head = list_push(head, 30)
+  var s: i64 = list_sum(head)
+  print_i64(s)
+  return 0
+}

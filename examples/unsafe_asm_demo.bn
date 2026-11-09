@@ -1,0 +1,15 @@
+module unsafe_asm_demo
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var x: i64 = 0
+  var ten: i64 = 10
+  unsafe {
+    asm volatile("nop" : : : )
+  }
+  unsafe {
+    asm volatile("x86.add64" : out:i64 : x:i64, ten:i64 : )
+  }
+  print_i64(x)
+  return 0
+}

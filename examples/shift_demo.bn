@@ -1,0 +1,10 @@
+module shift_demo
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var x: i64 = 1
+  var y: i64 = x.shl.mask(40)   // 40 mod 64 = 40 -> 1 << 40
+  var z: i64 = y.shr.u.mask(40)  // back to 1
+  print_i64(z)
+  return 0
+}

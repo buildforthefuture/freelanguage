@@ -1,0 +1,15 @@
+module goto_demo
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var i: i64 = 0
+  start: {
+    if i.ge.s(3) { goto done }
+    i = i.add.wrap(1)
+    goto start
+  }
+  done: {
+    print_i64(i)
+    return 0
+  }
+}

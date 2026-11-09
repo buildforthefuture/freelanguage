@@ -1,0 +1,17 @@
+module atomic_counter
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  let p: ptr = alloc(8)
+  atomic.store<i64>(p, 0, seq_cst)
+  var i: i64 = 0
+  loop {
+    if i.ge.s(5) { break }
+    let old: i64 = atomic.rmw<i64>(p, add, 1, seq_cst)
+    _ = old
+    i = i.add.wrap(1)
+  }
+  let v: i64 = atomic.load<i64>(p, seq_cst)
+  print_i64(v)
+  return 0
+}

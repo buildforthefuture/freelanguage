@@ -1,0 +1,28 @@
+module bubble_sort
+extern fn print_i64(v: i64)
+
+fn sort(data: ptr, len: i64) -> unit {
+  var i: i64 = 0
+  loop {
+    if i.ge.s(len) { break }
+    var j: i64 = 0
+    loop {
+      if j.add.wrap(1).ge.s(len) { break }
+      let a: ptr = int2ptr(ptr2int(data).add.wrap(j.mul.wrap(4)))
+      let b: ptr = int2ptr(ptr2int(data).add.wrap(j.add.wrap(1).mul.wrap(4)))
+      let av: i32 = load.unaligned<i32>(a)
+      let bv: i32 = load.unaligned<i32>(b)
+      if av.gt.s(bv) {
+        store.unaligned<i32>(a, bv)
+        store.unaligned<i32>(b, av)
+      }
+      j = j.add.wrap(1)
+    }
+    i = i.add.wrap(1)
+  }
+  return
+}
+
+fn main() -> i64 {
+  return 0
+}

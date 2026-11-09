@@ -1,0 +1,17 @@
+module string_length
+extern fn print_i64(v: i64)
+
+fn strlen(s: ptr) -> i64 {
+  var len: i64 = 0
+  loop {
+    let p: ptr = int2ptr(ptr2int(s).add.wrap(len))
+    let b: i8 = load.unaligned<i8>(p)
+    if b.eq(0) { break }
+    len = len.add.wrap(1)
+  }
+  return len
+}
+
+fn main() -> i64 {
+  return 0
+}

@@ -1,0 +1,11 @@
+module alloca_demo
+extern fn print_i64(v: i64)
+
+fn main() -> i64 {
+  var buf: ptr = alloca(16, 8)
+  store.unaligned<i32>(buf, 42)
+  var v: i32 = load.unaligned<i32>(buf)
+  var s: i64 = sext<i64>(v)
+  print_i64(s)
+  return 0
+}
