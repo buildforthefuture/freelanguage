@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+  "bayan-syntax",
+  "bayan-ir",
+  "bayan-verify",
+  "bayan-interp",
+  "bayan-codegen",
+  "bayan-cli",
+]
+
+[workspace.dependencies]
+clap = { version = "4", features = ["derive"] }
+proptest = "1"
